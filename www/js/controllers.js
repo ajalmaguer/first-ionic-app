@@ -30,8 +30,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.choose = function (row, col) {
-    console.log(row)
-    if(row == $scope.turns.length - 1) {
+    if(row != $scope.turns.length - 1) {
       return
     }
 
