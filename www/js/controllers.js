@@ -30,8 +30,15 @@ angular.module('starter.controllers', [])
   }
 
   $scope.choose = function (row, col) {
+    console.log(row)
     if(row == $scope.turns.length - 1) {
-      $scope.turns[row].guesses[col] = $scope.selectedIcon
+      return
+    }
+
+    if ($scope.turns[row].guesses[col] >= 3){
+      $scope.turns[row].guesses[col] = 0
+    } else {
+      $scope.turns[row].guesses[col]++
     }
   }
 
