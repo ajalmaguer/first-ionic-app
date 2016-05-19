@@ -1,0 +1,78 @@
+<ion-view view-title="M A S T E R M I N D">
+  <ion-header-bar class="row bar bar-subheader bar-stable">
+    <div class="col col-10">
+      &nbsp;
+    </div>
+    <div class="col text-center left-border">
+      Code
+    </div>
+    <div class="col col-20 text-center left-border">
+      Score
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+    <ion-list>
+      <!-- TODO: Repeat the ion-item below for each turn -->
+      <ion-item ng-repeat="turn in turns" class="row turn">
+
+        <div class="col col-10 text-center turn-num">
+          <!-- TODO:
+            Display turn number here (currently hard-coded to "1").
+            Hint - gotta love that $index in a ng-repeat :)
+          -->
+          {{$index + 1}}
+        </div>
+        <div class="col text-center left-border">
+          <!-- TODO:
+            Display icons in the 4 buttons below.
+            You only need to add the class for the icon corresponding
+            to the ICON SET FOR THAT POSITION - see menu.html for hints.
+            If an icon has not been set yet for a position, display a
+            placeholder icon instead such as 'ion-more'.
+            - and -
+            Clicking a button, always needs to set that position (data structure)
+            to the currently selected icon.
+          -->
+          <div class="button-bar">
+            <button ng-click="choose(turns.indexOf(turn), 0)" class="button button-icon icon {{iconFor(0, $index)}}"></button>
+            <button ng-click="choose(turns.indexOf(turn), 1)" class="button button-icon icon {{iconFor(1, $index)}}"></button>
+            <button ng-click="choose(turns.indexOf(turn), 2)" class="button button-icon icon {{iconFor(2, $index)}}"></button>
+            <button ng-click="choose(turns.indexOf(turn), 3)" class="button button-icon icon {{iconFor(3, $index)}}"></button>
+          </div>
+        </div>
+        <div class="col col-20 text-center left-border">
+          <div class="score-wrap">
+            <div ng-if="turn.scored">
+              <p>p = {{turn.perfect}}</p>
+              <p>a = {{turn.almost}}</p>
+            </div>
+
+            <div ng-if="!turn.scored">
+              <button ng-click="scoreTurn()" class="button button-small button-balanced">check</button>
+            </div>
+            <!-- TODO:
+              If this turn is the current turn, display a [score] button
+              that's disabled unless an icon has been chosen for all positions.
+
+              If not current turn, display the score for turn.
+              The score should show a <div> with a class of 'perfect'
+              for each position with correct icon and position
+              AND a <div> with a class of 'almost' for each position
+              with correct icon but in the incorrect position.
+              None of the <div>s should have any content.
+              When all is said and done, there should be anywhere from
+              zero to 4 of these:
+                <div class="perfect"></div>
+                  - or -
+                <div class="almost"></div>
+            -->
+          </div>
+        </div>
+
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>
